@@ -127,7 +127,7 @@ def main():
 	print bst.min()
 	print bst.count()
 	print bst.depth()
-	print bst.store()
+	print map(int,bst.store().split( ))
 
 if __name__ == "__main__":
 	main()
