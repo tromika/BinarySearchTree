@@ -4,15 +4,22 @@ from bst import *
 class TestBst(unittest.TestCase):
 	def setUp(self):
 		self.bst = BinarySearchTree()
-		self.bst.put(3)
-		self.bst.put(7)
-		self.bst.put(6)
-		self.bst.put(1)
+		self.bst.put(5)
+		self.bst.put(30)
 		self.bst.put(2)
+		self.bst.put(40)
+		self.bst.put(25)
+		self.bst.put(4)
 	def test_max(self):
-		self.assertEqual(self.bst.Max(), 7)
+		self.assertEqual(self.bst.Max(), 40)
 	def test_min(self):
-		self.assertEqual(self.bst.Min(), 1)
+		self.assertEqual(self.bst.Min(), 2)
+	def test_count(self):
+		self.assertEqual(self.bst.count(), 6)
+	def test_depth(self):
+		self.assertEqual(self.bst.depth(), 3)
+	def test_store(self):
+		self.assertEqual(self.bst.store(), '5 2 4 30 25 40 ')
 def main():
     unittest.main()
 

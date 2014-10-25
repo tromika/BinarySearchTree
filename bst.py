@@ -6,6 +6,7 @@ class Node:
 		self.rightChild = right
 		self.parent = parent
 
+	#Helpers
 	def hasLeftChild(self):
 		return self.leftChild
 
@@ -30,7 +31,7 @@ class BinarySearchTree:
 
 	def __init__(self):
 		self.root = None
-
+	#Insert node to the tree	
 	def put(self,key,val=None):
 		if self.root:
 			self._put(key,val,self.root)
@@ -49,12 +50,12 @@ class BinarySearchTree:
 			else:
 				   currentNode.rightChild = Node(key,val,parent=currentNode)
 
-
+	#Get node's value		   
 	def get(self,key):
 	   if self.root:
-		   res = self._get(key,self.root)
-		   if res:
-				  return res.value
+		   result = self._get(key,self.root)
+		   if result:
+				  return result.value
 		   else:
 				  return None
 	   else:
@@ -71,31 +72,62 @@ class BinarySearchTree:
 		   return self._get(key,currentNode.rightChild)
 
 
-
+	#Get the minimum value of the tree
 	def Min(self):
 	  current = self.root.leftChild
 	  while current.hasLeftChild():
 		  current = current.leftChild
 	  return current.key
-
+	#Get the maxium value of the tree
 	def Max(self):
 		current = self.root.rightChild
 		while current.hasRightChild():
 			current = current.rightChild
 		return current.key
 	
-
+	def depth(self):
+		if self.root.isLeaf():
+			return 1
+		else: 
+			return self._depth(self.root)
+	def _depth(self,currentNode):
+		maxDepth = 0
+		if currentNode.hasLeftChild():
+			maxDepth = max(maxDepth,self._depth(currentNode.leftChild))
+		if currentNode.hasRightChild():
+			maxDepth = max(maxDepth,self._depth(currentNode.rightChild))
+		return maxDepth + 1
+	def store(self):
+		return self._store(self.root,"")
+	def _store(self,currentNode,st):
+		if currentNode:
+			st+=str(currentNode.key)+" "
+			if currentNode.hasLeftChild():  st=str(self._store(currentNode.leftChild,st))
+			if currentNode.hasRightChild(): st=str(self._store(currentNode.rightChild,st))
+			return st
+	def count(self):
+		return self._count(self.root)
+	def _count(self,currentNode):
+		if currentNode is None:
+			return 0
+		else:
+			return self._count(currentNode.leftChild) + self._count(currentNode.rightChild) + 1
+			
 
 def main():
 	bst = BinarySearchTree()  
-	bst.put(3)
-	bst.put(7)
-	bst.put(6)
-	bst.put(1)
+	bst.put(5)
+	bst.put(30)
 	bst.put(2)
+	bst.put(40)
+	bst.put(25)
+	bst.put(4)
 
 	print bst.Max()
 	print bst.Min()
+	print bst.count()
+	print bst.depth()
+	print bst.store()
 
 if __name__ == "__main__":
 	main()
