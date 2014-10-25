@@ -91,7 +91,8 @@ class BinarySearchTree:
 		else: 
 			return self._depth(self.root)
 	def _depth(self,currentNode):
-		maxDepth = 0
+		maxDepthr = 0
+		maxDepthl = 0
 		if currentNode.hasLeftChild():
 			maxDepth = max(maxDepth,self._depth(currentNode.leftChild))
 		if currentNode.hasRightChild():
@@ -116,19 +117,15 @@ class BinarySearchTree:
 
 def main():
 	bst = BinarySearchTree()  
-	bst.put(5)
-	bst.put(30)
-	bst.put(2)
-	bst.put(40)
-	bst.put(25)
-	bst.put(4)
-
-	print bst.max()
-	print bst.min()
+	#content = raw_input()
+	#with open('F:/wp/sandbox/BinarySearchTree/input002.txt') as f:
+	#	content = f.read()
+	content =  content.split('\n')
+	for i in content:
+	 if (i!= 'TERM'):
+	 	print i
+	 	bst.put(i)
 	print bst.count()
-	print bst.depth()
-	print map(int,bst.store().split( ))
-
 if __name__ == "__main__":
 	main()
 
