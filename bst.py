@@ -73,13 +73,13 @@ class BinarySearchTree:
 
 
 	#Get the minimum value of the tree
-	def Min(self):
+	def min(self):
 	  current = self.root.leftChild
 	  while current.hasLeftChild():
 		  current = current.leftChild
 	  return current.key
 	#Get the maxium value of the tree
-	def Max(self):
+	def max(self):
 		current = self.root.rightChild
 		while current.hasRightChild():
 			current = current.rightChild
@@ -123,8 +123,8 @@ def main():
 	bst.put(25)
 	bst.put(4)
 
-	print bst.Max()
-	print bst.Min()
+	print bst.max()
+	print bst.min()
 	print bst.count()
 	print bst.depth()
 	print bst.store()

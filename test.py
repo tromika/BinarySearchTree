@@ -11,9 +11,9 @@ class TestBst(unittest.TestCase):
 		self.bst.put(25)
 		self.bst.put(4)
 	def test_max(self):
-		self.assertEqual(self.bst.Max(), 40)
+		self.assertEqual(self.bst.max(), 40)
 	def test_min(self):
-		self.assertEqual(self.bst.Min(), 2)
+		self.assertEqual(self.bst.min(), 2)
 	def test_count(self):
 		self.assertEqual(self.bst.count(), 6)
 	def test_depth(self):
